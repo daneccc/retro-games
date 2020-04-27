@@ -25,7 +25,7 @@
                     displayCurrentPlayer.innerHTML = currentPlayer
                 }
                 //if the square below your current square is not taken, you can't go here
-            } else alert('can\'t go here')
+                } else alert('can\'t go here')
         }
     }) (i)
 
@@ -46,31 +46,31 @@
         ];
         //now take the 4 values in each winningArrays and plug then into the squares
         for(let y = 0; y < winningArrays.length; y++) {
-            const square1 = squares[winningArrays[y][0]]
-            const square2 = squares[winningArrays[y][1]]
-            const square3 = squares[winningArrays[y][2]]
-            const square4 = squares[winningArrays[y][4]]
+            const square1 = squares[winningArrays[y][0]];
+            const square2 = squares[winningArrays[y][1]];
+            const square3 = squares[winningArrays[y][2]];
+            const square4 = squares[winningArrays[y][4]];
              
-        //now check those arrays to see if they all have the class of player-one    
-        if (square1.classList.contains('player-one') &&
-            square2.classList.contains('player-one') &&
-            square3.classList.contains('player-one') &&
-            square4.classList.contains('player-one')) {
-                //if they do, player-one is passed as the winner
-                result.innerHTML = 'Player One Wins!'
-            }
-            //now check to see if they all have the class name of player-two
+            //now check those arrays to see if they all have the class of player-one    
+            if (square1.classList.contains('player-one') &&
+                square2.classList.contains('player-one') &&
+                square3.classList.contains('player-one') &&
+                square4.classList.contains('player-one')) {
+                    //if they do, player-one is passed as the winner
+                    result.innerHTML = 'Player One Wins!'
+                }
+                //now check to see if they all have the class name of player-two
             else if (square1.classList.contains('player-two') &&
                 square2.classList.contains('player-two') &&
                 square3.classList.contains('player-two') &&
                 square4.classList.contains('player-two')) {
                 //if they do, player-two is passed on as the winner
-                result.innerHTML = 'Player Two Wins'
-                }
-
+                result.innerHTML = 'Player Two Wins!'
+            }   
         }
     }   
 
-
+    //add an eventListener to each square that will triggere the checkBoard function on click
+    squares.forEach(square => square.addEventListener('click', checkBoard))
 
 })
