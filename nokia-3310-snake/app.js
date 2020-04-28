@@ -24,6 +24,9 @@
         scoreDisplay.innerText = score
         intervalTime = 1000
         currentSnake = [2, 1, 0]
+        currentIndex = 0
+        currentSnake.forEach(index = squares[index].classList.add.apply('snake'))
+        interval = setInterval(moveOutcomes, intervalTime)
     }
 
     //assign functions to keycodes
