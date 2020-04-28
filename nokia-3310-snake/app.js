@@ -13,6 +13,7 @@
     let intervalTime = 0
     let interval = 0
 
+
     //to start, and restart the game
     function startGame() {
         currentSnake.forEach(index => squares[index].classList.remove('snake'))
@@ -28,6 +29,26 @@
         currentSnake.forEach(index = squares[index].classList.add.apply('snake'))
         interval = setInterval(moveOutcomes, intervalTime)
     }
+
+
+    //function that deals with ALL the move outcomes of the Snake
+    function moveOutcomes() {
+        //deals with snake hitting border and snake hitting self
+        if (
+            (currentSnake[0] + width >= (width*width) && direction === width) || //if snake hits bottom
+            (currentSnake[0] % width -1 && direction === 1) || //if skane hits right wall
+            (currentSnake[0] % width === 0 && direction === -1) || //if snake hits left wall
+            (currentSnake[0] - width < 0 && direction === -width) || //hits top
+            squares[currentSnake[0] + direction.classList.contains('snake')] //into itself
+        ) {
+            return clearInterval(interval)
+        }
+        const tail = currentSnake.pop() //removes last ite of the array and shows it
+        squares[tail].classList.remove('snake')  //removes class of snake from the TAIL
+        currentSnake.unshift(currentSnake[0] + direction) //gives direction to the head of the array
+
+        //deals with snake getting apple
+    }    
 
     //assign functions to keycodes
     function control(e) {
